@@ -7,9 +7,9 @@ export default /*#__PURE__*/ (() => ({
       props: {
         value: { type: String, default: defaultValue },
         parseStyles: { type: Function, default: options.parseStyles },
-        renderError: Function,
-        renderEmpty: Function,
-        render: Function,
+        renderError: { type: Function, default: options.renderError },
+        renderEmpty: { type: Function, default: options.renderEmpty },
+        render: { type: Function, default: options.render },
       },
       computed: {
         sfcDescriptor() {
