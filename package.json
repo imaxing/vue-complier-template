@@ -1,6 +1,6 @@
 {
   "name": "vue-run-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/vue-run-template.ssr.js",
   "browser": "dist/vue-run-template.esm.js",
