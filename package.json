@@ -1,6 +1,6 @@
 {
   "name": "vue-run-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/vue-run-template.ssr.js",
   "browser": "dist/vue-run-template.esm.js",
@@ -11,7 +11,16 @@
     "README.md",
     "package.json"
   ],
+  "keywords": [
+    "vue-run-template",
+    "vue-markdown",
+    "vue-run-sourcecode"
+  ],
   "sideEffects": false,
+  "homepage": "https://github.com/imaxing/vue-run-template",
+  "repository": {
+    "url": "https://github.com/imaxing/vue-run-template"
+  },
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.js",
     "prebuild": "rimraf ./dist",
