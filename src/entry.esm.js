@@ -17,20 +17,21 @@ export default /*#__PURE__*/ (() => ({
             const { descriptor } = parse(this.value);
             const { script, template, styles } = descriptor;
             eval(
-              script.content.replace(
+              (script ? script.content : "").replace(
                 /export\s+default/,
                 "this.scriptContent = "
               )
             );
 
             return {
-              template: template.content,
+              template: template ? template.content : "",
               script: this.scriptContent,
               styles,
             };
           } catch (error) {
+            console.error(`vue-run-template 解析失败: \n`, error);
             return {
-              error,
+              error: "vue-run-template value 解析失败",
             };
           }
         },
@@ -54,18 +55,23 @@ export default /*#__PURE__*/ (() => ({
         if (render) return render({ h, descriptor: this.sfcDescriptor });
 
         const { template, script, error } = this.sfcDescriptor;
-
         // 错误渲染
         if (error) {
           if ($scopedSlots.error) return $scopedSlots.error(error);
-          if (renderError) return renderError(error);
+          if (renderError)
+            return renderError({
+              h,
+              error,
+              descriptor: this.sfcDescriptor,
+            });
           return h("div", { class: "parse-error" }, error);
         }
 
         // 空代码渲染
         if (!template) {
           if ($scopedSlots.empty) return $scopedSlots.empty(error);
-          if (renderEmpty) return renderEmpty(error);
+          if (renderEmpty)
+            return renderEmpty({ h, descriptor: this.sfcDescriptor });
           return h("div", { class: "empty-template" }, "模板为空");
         }
 

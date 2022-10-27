@@ -16,7 +16,12 @@ npm install vue-run-template
 // main.js
 import Vue from "vue";
 import VueRunTemplate from "vue-run-template";
-Vue.use(VueRunTemplate);
+Vue.use(VueRunTemplate, {
+  parseStyles: ({ styles, vm }) => {},
+  render: ({ h, descriptor }) => {},
+  renderError: ({ h, descriptor, error }) => {},
+  renderEmpty: ({ h, descriptor }) => {},
+});
 ```
 
 ```js
@@ -64,6 +69,16 @@ export default `<script>
   };
 </script>
 ```
+
+**Options**
+
+| 参数        | 说明                                                                      | 类型                               | 可选值 | 默认值 |
+| ----------- | ------------------------------------------------------------------------- | ---------------------------------- | ------ | ------ |
+| value       | value / v-model 绑定值                                                    | string                             | -      | -      |
+| render      | 接管组件内部 render                                                       | Function({ h, descriptor })        | -      | -      |
+| renderError | value 解析失败内容渲染函数                                                | Function({ h, error, descriptor }) | -      | -      |
+| renderEmpty | value 为空时内容渲染函数                                                  | Function({ h, descriptor })        | -      | -      |
+| parseStyles | value 解析出的 style 标签内的内容, 组件未处理, 抛出数据调用方可自定义处理 | Function({ styles, vm })           | -      | -      |
 
 **DEMO**
 
