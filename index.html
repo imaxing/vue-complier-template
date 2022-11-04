@@ -4,12 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
+    <div id="app">
+      <vue-complier-template v-model="code"></vue-complier-template>
+    </div>
     <script type="module">
       import VueComplierTemplate from "./dist/index.esm.js";
-      console.log(VueComplierTemplate);
+      import { parse } from "https://cdn.jsdelivr.net/npm/@vue/compiler-sfc@3.2.41/dist/compiler-sfc.esm-browser.js";
+      Vue.use(VueComplierTemplate, {
+        parseCode: parse,
+        evalScript: eval,
+      });
+
+      new Vue({
+        el: "#app",
+        data: () => ({ code: "" }),
+        created() {
+          axios.get("./code.md").then((rsp) => {
+            this.code = rsp.data;
+          });
+        },
+      });
     </script>
   </body>
 </html>

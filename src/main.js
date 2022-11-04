@@ -7,7 +7,7 @@ export default {
         parseCode: {
           type: Function,
           default: options.parseCode,
-          required: options.parseCode ? false : true,
+          required: !!options.parseCode ? false : true,
         },
         parseStyles: { type: Function, default: options.parseStyles },
         renderError: { type: Function, default: options.renderError },
@@ -15,7 +15,7 @@ export default {
         evalScript: {
           type: Function,
           default: options.evalScript,
-          required: options.evalScript ? false : true,
+          required: !!options.evalScript ? false : true,
         },
         render: { type: Function, default: options.render },
       },
