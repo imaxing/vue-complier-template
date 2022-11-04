@@ -8,6 +8,7 @@
 
 ```bash
 npm install vue-complier-template
+npm install @vue/compiler-sfc@3.2.41
 ```
 
 **用法**
@@ -15,13 +16,11 @@ npm install vue-complier-template
 ```js
 // main.js
 import Vue from "vue";
+import { parse } from "@vue/compiler-sfc";
 import vueComplierTemplate from "vue-complier-template";
 Vue.use(vueComplierTemplate, {
-  parseStyles: ({ styles, vm }) => {},
+  parseCode: parse,
   evalScript: (value) => window.eval(value),
-  render: ({ h, descriptor }) => {},
-  renderError: ({ h, descriptor, error }) => {},
-  renderEmpty: ({ h, descriptor }) => {},
 });
 ```
 

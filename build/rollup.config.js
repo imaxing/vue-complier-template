@@ -107,6 +107,11 @@ if (!argv.format || argv.format === "es") {
           ],
         ],
       }),
+      terser({
+        output: {
+          ecma: 5,
+        },
+      }),
     ],
   };
   buildFormats.push(esConfig);

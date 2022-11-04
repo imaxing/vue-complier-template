@@ -1,21 +1,28 @@
-import { parse } from "@vue/compiler-sfc";
-
 export default /*#__PURE__*/ (() => ({
   install(Vue, options = {}) {
     const { name = "vue-complier-template", defaultValue = "" } = options;
     Vue.component(name, {
       props: {
         value: { type: String, default: defaultValue },
+        parseCode: {
+          type: Function,
+          default: options.parseCode,
+          required: true,
+        },
         parseStyles: { type: Function, default: options.parseStyles },
         renderError: { type: Function, default: options.renderError },
         renderEmpty: { type: Function, default: options.renderEmpty },
-        evalScript: { type: Function, default: options.evalScript },
+        evalScript: {
+          type: Function,
+          default: options.evalScript,
+          required: true,
+        },
         render: { type: Function, default: options.render },
       },
       computed: {
         sfcDescriptor() {
           try {
-            const { descriptor } = parse(this.value);
+            const { descriptor } = this.parseCode(this.value);
             const { script, template, styles } = descriptor;
             this.evalScript &&
               this.evalScript(
