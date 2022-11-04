@@ -1,4 +1,4 @@
-export default /*#__PURE__*/ (() => ({
+export default {
   install(Vue, options = {}) {
     const { name = "vue-complier-template", defaultValue = "" } = options;
     Vue.component(name, {
@@ -91,4 +91,4 @@ export default /*#__PURE__*/ (() => ({
       },
     });
   },
-}))();
+};
