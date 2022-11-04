@@ -2,13 +2,14 @@ import { parse } from "@vue/compiler-sfc";
 
 export default /*#__PURE__*/ (() => ({
   install(Vue, options = {}) {
-    const { name = "vue-run-template", defaultValue = "" } = options;
+    const { name = "vue-complier-template", defaultValue = "" } = options;
     Vue.component(name, {
       props: {
         value: { type: String, default: defaultValue },
         parseStyles: { type: Function, default: options.parseStyles },
         renderError: { type: Function, default: options.renderError },
         renderEmpty: { type: Function, default: options.renderEmpty },
+        evalScript: { type: Function, default: options.evalScript },
         render: { type: Function, default: options.render },
       },
       computed: {
@@ -16,22 +17,26 @@ export default /*#__PURE__*/ (() => ({
           try {
             const { descriptor } = parse(this.value);
             const { script, template, styles } = descriptor;
-            eval(
-              (script ? script.content : "").replace(
-                /export\s+default/,
-                "this.scriptContent = "
-              )
-            );
+            this.evalScript &&
+              this.evalScript(
+                (script ? script.content : "").replace(
+                  /export\s+default/,
+                  "window.scriptContent = "
+                )
+              );
+
+            const scriptContent = window.scriptContent;
+            delete window.scriptContent;
 
             return {
               template: template ? template.content : "",
-              script: this.scriptContent,
+              script: scriptContent,
               styles,
             };
           } catch (error) {
-            console.error(`vue-run-template 解析失败: \n`, error);
+            console.error(`源码解析失败: \n`, error);
             return {
-              error: "vue-run-template value 解析失败",
+              error: "源码解析失败",
             };
           }
         },
@@ -75,17 +80,7 @@ export default /*#__PURE__*/ (() => ({
           return h("div", { class: "empty-template" }, "模板为空");
         }
 
-        return h("div", [
-          h({
-            template,
-            ...script,
-          }),
-          $scopedSlots.source &&
-            $scopedSlots.source({
-              code: value,
-              update: (v) => this.$emit("input", v),
-            }),
-        ]);
+        return h({ template, ...script });
       },
     });
   },

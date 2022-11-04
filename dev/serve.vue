@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <vue-run-template v-model="code">
-      <template #source="{ code, update }">
-        <code-editor :value="code" @input="update" />
-      </template>
-    </vue-run-template>
+    <vue-complier-template v-model="code" />
+    <code-editor v-model="code" />
   </div>
 </template>
 

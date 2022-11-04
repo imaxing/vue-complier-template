@@ -1,25 +1,26 @@
 {
-  "name": "vue-run-template",
-  "version": "1.0.2",
+  "name": "vue-complier-template",
+  "version": "1.0.0",
   "description": "",
-  "main": "dist/vue-run-template.ssr.js",
-  "browser": "dist/vue-run-template.esm.js",
-  "module": "dist/vue-run-template.esm.js",
-  "unpkg": "dist/vue-run-template.min.js",
+  "main": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
   "files": [
-    "dist/vue-run-template.esm.js",
+    "dist/index.esm.js",
+    "dist/index.umd.js",
     "README.md",
     "package.json"
   ],
   "keywords": [
-    "vue-run-template",
+    "vue-complier-template",
     "vue-markdown",
     "vue-run-sourcecode"
   ],
   "sideEffects": false,
-  "homepage": "https://github.com/imaxing/vue-run-template",
+  "homepage": "https://github.com/imaxing/vue-complier-template",
   "repository": {
-    "url": "https://github.com/imaxing/vue-run-template"
+    "url": "https://github.com/imaxing/vue-complier-template"
   },
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.js",
