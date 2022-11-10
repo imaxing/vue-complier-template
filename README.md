@@ -76,6 +76,7 @@ export default `<script>
 | render      | 接管组件内部 render                                         | Function({ h, descriptor })        | -      | -      |
 | renderError | value 解析失败内容渲染函数                                  | Function({ h, error, descriptor }) | -      | -      |
 | renderEmpty | value 为空时内容渲染函数                                    | Function({ h, descriptor })        | -      | -      |
+| parseCode  | 解析vue模板数据(必填)                                    | Function(value)                    | -      | -      |
 | evalScript  | 解析 script 字符串(必填)                                    | Function(value)                    | -      | -      |
 | parseStyles | value 解析出的 style 标签内的内容, 抛出数据调用方自定义处理 | Function({ styles, vm })           | -      | -      |
 
