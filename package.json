@@ -1,6 +1,6 @@
 {
   "name": "vue-complier-template",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
@@ -15,8 +15,9 @@
     "rollup-plugin-terser": "7.0.2"
   },
   "keywords": [
-    "create file input",
-    "input file"
+    "vue 实时运行",
+    "vue 调试组件",
+    "vue 组件实时调试"
   ],
   "scripts": {
     "build": "rollup -c",
