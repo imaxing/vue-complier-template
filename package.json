@@ -1,10 +1,13 @@
 {
   "name": "vue-complier-template",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
-  "dependencies": {},
+  "homepage": "https://ckrw.gitee.io/vue-compiler-template-example/",
+  "repository": {
+    "url": "https://github.com/imaxing/vue-complier-template"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",

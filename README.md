@@ -24,6 +24,15 @@ Vue.use(vueComplierTemplate, {
 });
 ```
 
+**vue.config.js**
+
+```js
+module.exports = {
+  // 开启 runtime
+  runtimeCompiler: true,
+};
+```
+
 ```js
 // example-source-code.js
 export default `<script>
@@ -76,10 +85,14 @@ export default `<script>
 | render      | 接管组件内部 render                                         | Function({ h, descriptor })        | -      | -      |
 | renderError | value 解析失败内容渲染函数                                  | Function({ h, error, descriptor }) | -      | -      |
 | renderEmpty | value 为空时内容渲染函数                                    | Function({ h, descriptor })        | -      | -      |
-| parseCode  | 解析vue模板数据(必填)                                    | Function(value)                    | -      | -      |
+| parseCode   | 解析 vue 模板数据(必填)                                     | Function(value)                    | -      | -      |
 | evalScript  | 解析 script 字符串(必填)                                    | Function(value)                    | -      | -      |
 | parseStyles | value 解析出的 style 标签内的内容, 抛出数据调用方自定义处理 | Function({ styles, vm })           | -      | -      |
 
-**DEMO**
+**codesandbox**
 
 [![Edit vue-complier-template-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-complier-template-example-4qjo20?fontsize=14&hidenavigation=1&theme=dark)
+
+**Live Demo**
+
+[在线体验](http://localhost:8081/)
