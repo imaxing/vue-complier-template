@@ -1,6 +1,6 @@
 {
   "name": "vue-complier-template",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",

@@ -95,4 +95,4 @@ export default `<script>
 
 **Live Demo**
 
-[在线体验](http://localhost:8081/)
+[在线体验](https://ckrw.gitee.io/vue-compiler-template-example/)
