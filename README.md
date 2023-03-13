@@ -7,8 +7,7 @@
 **安装**
 
 ```bash
-npm install vue-complier-template
-npm install @vue/compiler-sfc@3.2.41
+npm install vue-complier-template @vue/compiler-sfc@3.2.41
 ```
 
 **用法**
@@ -93,6 +92,5 @@ export default `<script>
 
 [![Edit vue-complier-template-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-complier-template-example-4qjo20?fontsize=14&hidenavigation=1&theme=dark)
 
-**Live Demo**
 
-[在线体验](https://ckrw.gitee.io/vue-compiler-template-example/)
+[Live Demo](https://ckrw.gitee.io/vue-compiler-template-example/)
